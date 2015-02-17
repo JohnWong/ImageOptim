@@ -44,6 +44,8 @@
 	<integer>4</integer>
 	<key>RunLowPriority</key>
 	<true/>
+	<key>PngQuantEnabled</key>
+	<true/>
 	<key>BounceDock</key>
 	<true/>
 </dict>

@@ -432,7 +432,8 @@ static NSString *kIMDraggedRowIndexesPboardType = @"com.imageoptim.rows";
     NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 
     if ([defs boolForKey:@"PngCrushEnabled"] || [defs boolForKey:@"PngOutEnabled"] ||
-            [defs boolForKey:@"OptiPngEnabled"] || [defs boolForKey:@"AdvPngEnabled"] || [defs boolForKey:@"ZopfliEnabled"]) {
+            [defs boolForKey:@"OptiPngEnabled"] || [defs boolForKey:@"AdvPngEnabled"] ||
+            [defs boolForKey:@"ZopfliEnabled"] || [defs boolForKey:@"PngQuantEnabled"]) {
         types |= PNG_ENABLED;
     }
 

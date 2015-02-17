@@ -93,6 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52B5A1211A92763C0035532E /* pngpriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pngpriv.h; sourceTree = "<group>"; };
 		5A19418B0FF96FAD007C3324 /* adler32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; lineEnding = 0; path = adler32.c; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
 		5A19418C0FF96FAD007C3324 /* compress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = compress.c; sourceTree = "<group>"; };
 		5A19418D0FF96FAD007C3324 /* crc32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc32.c; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 		08FB7795FE84155DC02AAC07 /* libpng */ = {
 			isa = PBXGroup;
 			children = (
+				52B5A1211A92763C0035532E /* pngpriv.h */,
 				5A19418A0FF96FAD007C3324 /* zlib */,
 				5A19420D0FF97333007C3324 /* config.h */,
 				5A1944000FF98722007C3324 /* png.c */,

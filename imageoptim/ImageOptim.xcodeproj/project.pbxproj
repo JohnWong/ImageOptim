@@ -26,6 +26,7 @@
 		1ACFBA171799E9CC006D93B2 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 1ACFBA191799E9CC006D93B2 /* Credits.html */; };
 		1AD5B24E174F84C600BC75FD /* ImageOptimVerbs.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 1AD5B24D174F84C600BC75FD /* ImageOptimVerbs.sdef */; };
 		1AD5B259174FEA6200BC75FD /* GetQueueCountCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5B250174F850900BC75FD /* GetQueueCountCommand.m */; };
+		52B5A13A1A9318500035532E /* PngQuantWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B5A1381A9318500035532E /* PngQuantWorker.m */; };
 		5A08FDB01933D635001DA24B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A08FDAF1933D635001DA24B /* libsqlite3.dylib */; };
 		5A08FE921936982E001DA24B /* ResultsDb.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A08FE911936982E001DA24B /* ResultsDb.m */; };
 		5A0A24F117492D39003264CC /* ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A0A24EF17492D39003264CC /* ok@2x.png */; };
@@ -330,6 +331,8 @@
 		1B5210E616BFA7CA0044C869 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/MainMenu.xib"; sourceTree = "<group>"; };
 		1B5210E716BFA7CA0044C869 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/PrefsController.xib"; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		52B5A1381A9318500035532E /* PngQuantWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PngQuantWorker.m; sourceTree = "<group>"; };
+		52B5A1391A9318500035532E /* PngQuantWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PngQuantWorker.h; sourceTree = "<group>"; };
 		5A012EBD17A89234002E794E /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = cs; path = cs.lproj/Credits.html; sourceTree = "<group>"; };
 		5A012ECC17A89238002E794E /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = tr; path = tr.lproj/Credits.html; sourceTree = "<group>"; };
 		5A012ECD17A89239002E794E /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = vi; path = vi.lproj/Credits.html; sourceTree = "<group>"; };
@@ -727,6 +730,8 @@
 		5AE54DE50CAEF51300903DF4 /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				52B5A1381A9318500035532E /* PngQuantWorker.m */,
+				52B5A1391A9318500035532E /* PngQuantWorker.h */,
 				5AE54E1F0CAF16D800903DF4 /* AdvCompWorker.h */,
 				5AE54E200CAF16D800903DF4 /* AdvCompWorker.m */,
 				5A44F5850CB2ECFE00BD2884 /* CommandWorker.h */,
@@ -1088,6 +1093,7 @@
 				5A6242080CA86DC7005942A3 /* PrefsController.m in Sources */,
 				5A08FE921936982E001DA24B /* ResultsDb.m in Sources */,
 				5AA1B7E9140AC55F00B5707C /* RevealButtonCell.m in Sources */,
+				52B5A13A1A9318500035532E /* PngQuantWorker.m in Sources */,
 				5A8A18141416D1D700D62DB7 /* SavingsFormatter.m in Sources */,
 				5AACA8310CAFE74E004D45CA /* Transformers.m in Sources */,
 				5AACA13F0CAF241B004D45CA /* Worker.m in Sources */,
@@ -1345,6 +1351,7 @@
 					"$(BUILT_PRODUCTS_DIR)",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.6.8;
 				PRODUCT_NAME = ImageOptim;

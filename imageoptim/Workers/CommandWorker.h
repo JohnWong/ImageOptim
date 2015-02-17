@@ -28,4 +28,7 @@
 -(BOOL)taskForKey:(NSString *)key bundleName:(NSString *)resourceName arguments:(NSArray *)args;
 
 -(BOOL)runWithTempPath:(NSURL*)tempPath;
+
+-(NSURL *)tempPath;
+
 @end

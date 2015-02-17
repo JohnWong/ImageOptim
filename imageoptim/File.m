@@ -14,6 +14,7 @@
 #import "Workers/JpegoptimWorker.h"
 #import "Workers/JpegtranWorker.h"
 #import "Workers/GifsicleWorker.h"
+#import "Workers/PngQuantWorker.h"
 #import <sys/xattr.h>
 #import "log.h"
 #include "ResultsDb.h"
@@ -40,7 +41,7 @@
 
 @implementation File
 
-@synthesize workersPreviousResults, byteSizeOriginal, byteSizeOptimized, filePath, displayName, statusText, statusOrder, statusImage, percentDone, bestToolName;
+@synthesize workersPreviousResults, byteSizeOriginal, byteSizeOptimized, filePath, lossyFilePath, displayName, statusText, statusOrder, statusImage, percentDone, bestToolName;
 
 -(instancetype)initWithFilePath:(NSURL *)aPath resultsDatabase:(ResultsDb*)aDb
 {
@@ -485,15 +486,20 @@
     NSArray *worker_list = nil;
 
     if (fileType == FILETYPE_PNG) {
+        if ([defs boolForKey:@"PngQuantEnabled"]) {
+            PngQuantWorker *quantWorker = [[PngQuantWorker alloc] initWithFile:self];
+            [quantWorker runWithTempPath:nil];
+        }
+        
         worker_list = @[
                           @ {@"key":@"PngCrushEnabled", @"class":[PngCrushWorker class]},
                           @ {@"key":@"OptiPngEnabled", @"class":[OptiPngWorker class]},
-        @ {@"key":@"ZopfliEnabled", @"class":[ZopfliWorker class], @"block": ^(Worker *w) {
-            ((ZopfliWorker *)w).alternativeStrategy = hasBeenRunBefore;
-        }
+                          @ {@"key":@"ZopfliEnabled", @"class":[ZopfliWorker class], @"block": ^(Worker *w) {
+                                ((ZopfliWorker *)w).alternativeStrategy = hasBeenRunBefore;
+                            }
                             },
-        @ {@"key":@"PngOutEnabled", @"class":[PngoutWorker class]},
-        @ {@"key":@"AdvPngEnabled", @"class":[AdvCompWorker class]},
+                          @ {@"key":@"PngOutEnabled", @"class":[PngoutWorker class]},
+                          @ {@"key":@"AdvPngEnabled", @"class":[AdvCompWorker class]},
                       ];
     } else if (fileType == FILETYPE_JPEG) {
         worker_list = @[

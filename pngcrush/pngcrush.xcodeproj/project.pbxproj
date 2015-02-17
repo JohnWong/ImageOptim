@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52B5A1231A9276F10035532E /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 52B5A1221A9276F10035532E /* Makefile */; };
 		5A8165FE0EA1163300962CF2 /* pngcrush.c in Sources */ = {isa = PBXBuildFile; fileRef = 5A8165E00EA1163300962CF2 /* pngcrush.c */; };
 		5A98488F11235498007622D7 /* liblibpng.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A98488C11235489007622D7 /* liblibpng.dylib */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52B5A1221A9276F10035532E /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		5A27BA12139B08C00095FC2F /* release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = release.xcconfig; path = ../imageoptim/release.xcconfig; sourceTree = SOURCE_ROOT; };
 		5A27BA13139B08C00095FC2F /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = debug.xcconfig; path = ../imageoptim/debug.xcconfig; sourceTree = SOURCE_ROOT; };
 		5A7399790EA27F7E00D751E1 /* libpng.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpng.xcodeproj; path = ../libpng/libpng.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -76,6 +78,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				52B5A1221A9276F10035532E /* Makefile */,
 				5A7399790EA27F7E00D751E1 /* libpng.xcodeproj */,
 				5A8165E00EA1163300962CF2 /* pngcrush.c */,
 			);
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B5A1231A9276F10035532E /* Makefile in Sources */,
 				5A8165FE0EA1163300962CF2 /* pngcrush.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
