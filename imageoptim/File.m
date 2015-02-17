@@ -488,7 +488,7 @@
     if (fileType == FILETYPE_PNG) {
         if ([defs boolForKey:@"PngQuantEnabled"]) {
             PngQuantWorker *quantWorker = [[PngQuantWorker alloc] initWithFile:self];
-            [quantWorker runWithTempPath:nil];
+            [quantWorker runWithTempPath:[quantWorker tempPath]];
         }
         
         worker_list = @[

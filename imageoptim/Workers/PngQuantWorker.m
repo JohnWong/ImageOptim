@@ -22,7 +22,7 @@
 }
 
 -(BOOL)runWithTempPath:(NSURL *)temp {
-    NSMutableArray *args = [NSMutableArray arrayWithObjects:@"--force",@"--nofs",@"--output",file.filePathOptimized.path,file.filePathOptimized.path,nil];
+    NSMutableArray *args = [NSMutableArray arrayWithObjects:@"--force",@"--nofs",@"--output",temp.path,file.filePathOptimized.path,nil];
     
     if (![self taskForKey:@"PngQuant" bundleName:@"pngquant" arguments:args]) {
         return NO;
@@ -43,6 +43,9 @@
     [commandHandle closeFile];
     
     if ([task terminationStatus]) return NO;
+    NSInteger fileSizeOptimized = [File fileByteSize:temp];
+    return [file setFilePathOptimized:temp  size:fileSizeOptimized toolName:@"PngQuant"];
+
     return YES;
 }
 
