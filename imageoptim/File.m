@@ -24,16 +24,14 @@
     @public
     NSString *name;
     NSUInteger fileSize;
-    double ratio;
 }
 @end
 
 @implementation ToolStats
-- (instancetype)initWithName:(NSString*)aName oldSize:(NSUInteger)oldSize newSize:(NSUInteger)size {
+- (instancetype)initWithName:(NSString*)aName newSize:(NSUInteger)size {
     if ((self = [super init])) {
         name = aName;
         fileSize = size;
-        ratio = (double)oldSize/(double)size;
     }
     return self;
 }
@@ -41,7 +39,7 @@
 
 @implementation File
 
-@synthesize workersPreviousResults, byteSizeOriginal, byteSizeOptimized, filePath, lossyFilePath, displayName, statusText, statusOrder, statusImage, percentDone, bestToolName;
+@synthesize workersPreviousResults, byteSizeOriginal, byteSizeOptimized, filePath, displayName, statusText, statusOrder, statusImage, percentDone, bestToolName;
 
 -(instancetype)initWithFilePath:(NSURL *)aPath resultsDatabase:(ResultsDb*)aDb
 {
@@ -139,17 +137,16 @@
     bestTools[newTool->name] = newTool;
 
     NSString *smallestFileToolName = nil; NSUInteger smallestFile = byteSizeOriginal;
-    NSString *bestRatioToolName = nil; float bestRatio = 0;
+//    Each tool is not based on previous product. So best ratio should be the smallest file.
     for (NSString *name in bestTools) {
         ToolStats *t = bestTools[name];
-        if (t->ratio > bestRatio) {bestRatioToolName = name; bestRatio = t->ratio;}
         if (t->fileSize < smallestFile) {smallestFileToolName = name; smallestFile = t->fileSize;}
     }
     NSString *newBestToolName;
-    if (smallestFileToolName && bestRatioToolName && ![bestRatioToolName isEqualToString:smallestFileToolName]) {
-        newBestToolName = [NSString stringWithFormat:NSLocalizedString(@"%@+%@","toolname+toolname in Best Tool column"), bestRatioToolName, smallestFileToolName];
+    if (bestTools[@"PngQuant"] && ![newBestToolName isEqualToString:@"PngQuant"]) {
+        newBestToolName = [@"PngQuant+" stringByAppendingString:smallestFileToolName];
     } else {
-        newBestToolName = smallestFileToolName ? smallestFileToolName : bestRatioToolName;
+        newBestToolName = smallestFileToolName;
     }
     if (![newBestToolName isEqualToString:self.bestToolName]) {
         self.bestToolName = newBestToolName;
@@ -163,10 +160,9 @@
             assert(![filePathOptimized.path isEqualToString:tempPath.path]);
             [self removeOldFilePathOptimized];
             filePathOptimized = tempPath;
-            NSUInteger oldSize = byteSizeOptimized;
             [self setByteSizeOptimized:size];
-
-            [self performSelectorOnMainThread:@selector(updateBestToolName:) withObject:[[ToolStats alloc] initWithName:toolname oldSize:oldSize newSize:size] waitUntilDone:NO];
+            
+            [self performSelectorOnMainThread:@selector(updateBestToolName:) withObject:[[ToolStats alloc] initWithName:toolname newSize:size] waitUntilDone:NO];
             return YES;
         }
     }
