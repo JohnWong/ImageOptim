@@ -143,7 +143,7 @@
         if (t->fileSize < smallestFile) {smallestFileToolName = name; smallestFile = t->fileSize;}
     }
     NSString *newBestToolName;
-    if (bestTools[@"PngQuant"] && ![newBestToolName isEqualToString:@"PngQuant"]) {
+    if (bestTools[@"PngQuant"] && ![smallestFileToolName isEqualToString:@"PngQuant"]) {
         newBestToolName = [@"PngQuant+" stringByAppendingString:smallestFileToolName];
     } else {
         newBestToolName = smallestFileToolName;
